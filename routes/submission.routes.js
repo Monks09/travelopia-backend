@@ -6,10 +6,11 @@ const router = express.Router();
 router.get("/", async (req, res) => {
     try {
         let page = req.query.page || 1;
-        let submissions = await getSubmissions(page);
+        let { submissions, totalPages } = await getSubmissions(page);
         res.status(200).send({
             "message": "Here are the submissions",
-            data: submissions,
+            submissions,
+            totalPages,
         })
     }
     catch (err) {

@@ -1,12 +1,15 @@
 const express = require("express");
 const connectToDatabase = require("./config/db");
 const submissionRouter = require("./routes/submission.routes");
+const cors = require("cors");
 
 const app = express();
 
 const PORT = 3030;
 
 app.use(express.json());
+
+app.use(cors());
 
 app.use("/submissions", submissionRouter);
 
